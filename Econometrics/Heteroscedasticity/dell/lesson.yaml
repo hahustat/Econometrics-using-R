@@ -1,0 +1,100 @@
+- Class: meta
+  Course: Econometrics
+  Lesson: Heteroscedasticity
+  Author: Tedros Gebregergs
+  Type: Standard
+  Organization: Mekelle University
+  Version: 2.4.5
+
+- Class: text
+  Output: Heteroscedasticity....
+  
+
+- Class: cmd_question
+  Output: Consider the data on consumption expenditure (Y) and income (X) for 20 households (both in thousands of Dollars) in the data set "consmp". Run OLS and store the result in 'fit0<-lm(expen~income,consmp)'.
+  CorrectAnswer: fit0 <-lm(expen ~ income, consmp)
+  AnswerTests: creates_lm_model('fit0 <-lm(expen ~ income, consmp)')
+  Hint: hint
+
+- Class: cmd_question
+  Output: Look at the summary result. write 'summary(fit0)'
+  CorrectAnswer: summary(fit0)
+  AnswerTests: omnitest(correctExpr='summary(fit0)')
+  Hint: hint
+
+- Class: figure
+  Output: A plot of the residuals against the values of the explanatory variable checks for presence of Heteroscedasticity using plot(consmp$expen,fit0$resid).look for any pattern b/n Xi and the residuals.
+  Figure: plot0.R
+  FigureType: new
+
+- Class: text
+  Output: It can clearly be seen that the scatter of the residuals (i.e., the variance of the residuals) increases with Xi. This is an indication of a heteroscedasticity problem. However, we should not come to a conclusion until we apply formal tests of the hypothesis of homoscedasticity
+
+
+
+- Class: text
+  Output: one of the test for heteroscedasticity is Goldfeld-Quandt test. Let's first order the observations based on the absolute magnitude of the explanatory variable X. We then divide the data into three parts n1=8,p=4 and n2=8. To increase the power of the test we drop the middle p = 4 residuals. We then run a separate regression on the first and the second parts, and calculate the residual variance for each of the two parts. 
+
+- Class: cmd_question
+  Output: sort the observations based on income(X) and save as consmp_o, 'consmp_o<-consmp[order(consmp$income),]'
+  CorrectAnswer: consmp_o<-consmp[order(consmp$income),]
+  AnswerTests: omnitest(correctExpr='consmp_o<-consmp[order(consmp$income),]')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: The first observation data 'part1<-consmp_o[1:8,]'
+  CorrectAnswer: part1<-consmp_o[1:8,]
+  AnswerTests: omnitest(correctExpr='part1<-consmp_o[1:8,]')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: Similarly, the last observation,'part3<-consmp_o[13:20,]'.
+  CorrectAnswer: part3<-consmp_o[13:20,]
+  AnswerTests: omnitest(correctExpr='part3<-consmp_o[13:20,]')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: I have applied OLS using data 'part1' for you using 'fit_n1<-lm(expen~income,part1)'. Please calculate S1^2 using 's1=sum(resid(fit_n1)^2)/(nrow(part1)-2)'.
+  CorrectAnswer: s1=sum(resid(fit_n1)^2)/(nrow(part1)-2)
+  AnswerTests: omnitest(correctExpr='s1=sum(resid(fit_n1)^2)/(nrow(part1)-2)')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: Similarly for the second part,'s3=sum(resid(fit_n3)^2)/(nrow(part3)-2)'
+  CorrectAnswer: s3=sum(resid(fit_n3)^2)/(nrow(part3)-2)
+  AnswerTests: omnitest(correctExpr='s3=sum(resid(fit_n3)^2)/(nrow(part3)-2)')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: Then calculate, the Goldfeld-Quandt test statistic and save it in 'F_cal'.
+  CorrectAnswer: F_cal<-s3/s1
+  AnswerTests: omnitest(correctExpr='F_cal<-s3/s1')
+  Hint: hint
+  
+
+- Class: cmd_question
+  Output: At alpha=0.05, the critical F-statistic with df=n1=8,n2=8, and k=2 is,'f_tab<-qf(0.05,8-2,8-2,lower.tail=F)'
+  CorrectAnswer: f_tab<-qf(0.05,8-2,8-2,lower.tail=F)
+  AnswerTests: omnitest(correctExpr='f_tab<-qf(0.05,8-2,8-2,lower.tail=F))')
+  Hint: hint
+
+- Class: cmd_question
+  Output: Run 'print(c(F_cal=F_cal,F_tab=f_tab)'
+  CorrectAnswer: print(c(F_cal=F_cal,F_tab=f_tab))
+  AnswerTests: omnitest(correctExpr='print(c(F_cal=F_cal,F_tab=f_tab))')
+  Hint: hint
+  
+
+- Class: text
+  Output: Since F_cal=10.72 is greater than the tabulated value, we reject the null hypothesis of homoscedasticity at the 5% significance level.
+
+
+- Class: text
+  Output: The second test for heteroscedasticity is Breusch - Pagan test. it involves apply OLS to y=(E^2/sigma_hat_sq)=gamma_0+gamma_1*Z1+u_i. Then compute the regression sum of squares (RSS), and then Breusch - Pagan test statistic is given by chi_square =RSS/2.
+
+

@@ -1,0 +1,40 @@
+- Class: meta
+  Course: Econometrics
+  Lesson: what is Econometrics
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+- Class: text
+  Output: This course is about econometrics for under graduate students. The module of the course
+          is sturectured first theoritical and each theory supported by numeric calculation.
+          As the course is designed for undergraduate,we belive that students should practice numeric problems by thier hand.
+          However, we belive that every steps that can be done by hand is possible in R language. 
+          And hence, it is designed in a way that does not use much packages, rather to write a code for each step of the process.
+          
+
+
+- Class: mult_question
+  Output: Which is true about the defintion of econometrics?
+  AnswerChoices: econometrics is the application of statistical and mathematical methods to the analysis of economic data with a
+                purpose of giving empirical content to economic theories and verifying or refuting them;it is concerned with the use of statistical methods to attach numerical values to
+                the parameters of economic models and also with the use of these models for prediction;Econometrics may be defined as the social science in which the tools of economic theory, mathematics, and statistical inference are applied to the analysis of eco-nomic phenomena;econometrics may be defined as the quantitative analysis of actual economic 
+                phenomena based on the concurrent development of theory and observation, re-lated by appropriate methods of inferenc;The method of econometric research aims, essentially, at a conjunction of eco-nomic theory and actual measurements, using the theory and technique of statis-tical inference as a bridge pier;All
+  CorrectAnswer: All
+  AnswerTests: omnitest(correctVal= 'All')
+  Hint: hint
+
+- Class: text
+  Output: Literally speaking, the word ‘econometrics’ means measurement in economics. Although measurement is an important part of econometrics, the scope of econometrics is much broader as shown in the above defintion.
+           Before any statistical analysis with economic data is performed, one needs a clear mathematical formulation of the relevant economic theory. For example, saying that the demand curve is downward sloping is not enough. We have to write the statement in mathematical form as shown in your module 1(wwww).
+- Class: text
+  Output: Congrats! You've concluded this lesson on what is econometrics which are truly extraordinary!
+
+- Class: mult_question
+  Output: Would you like to submit the log of this lesson to Google Forms so
+    that your instructor (Mekelle University) may evaluate your progress?
+  AnswerChoices: Yes;No
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: hint
