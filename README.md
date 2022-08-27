@@ -24,9 +24,9 @@ swirl::install_course_github("hahustat", "Econometrics-using-R")
 ```
 
 ## How to use
-1. library(swirl)
-2. swirl()
-3. select [Econometrics]()
+1. type  [library(swirl)]()
+2. type [swirl()]()
+3. then select [Econometrics]()
 
 ### Website
 
