@@ -1,2 +1,33 @@
 # Econometrics-using-R
-this course is designed in a way that interactive using R programming and with less using available econometric R packages. 
+Econometrics course for undergraduate students using R programming. 
+
+---
+title: "Econometrics"
+---
+
+### Author
+
+- Tedros Gebregegrgs
+
+### Co-Authors
+
+### Description
+
+Econometrics using R.
+
+### Installation
+
+```r
+swirl::install_course("Econometrics")
+
+swirl::install_course_github("hahustat", "Econometrics-using-R")
+```
+
+## How to use
+1. library(swirl)
+2. swirl()
+3. select [Econometrics]()
+
+### Website
+
+- https://github.com/hahustat/Econometrics-using-R/
